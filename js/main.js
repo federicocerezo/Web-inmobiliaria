@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Dilus Liebing site loaded');
-
     // Before/After Slider Logic
     const sliderContainer = document.querySelector('.slider-container');
     if (sliderContainer) {
@@ -8,9 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const handle = sliderContainer.querySelector('.slider-handle');
         const beforeImgElement = beforeImage.querySelector('img');
 
-        // Initial setup ensuring the image inside the clipped container is full width
         const updateImageWidth = () => {
+            // Asegura que la imagen de 'antes' siempre ocupe el ancho total del contenedor
             beforeImgElement.style.width = `${sliderContainer.offsetWidth}px`;
+            beforeImgElement.style.minWidth = `${sliderContainer.offsetWidth}px`;
         };
 
         window.addEventListener('resize', updateImageWidth);
@@ -22,14 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = sliderContainer.getBoundingClientRect();
             let pos = x - rect.left;
 
-            // Constrain
             if (pos < 0) pos = 0;
             if (pos > rect.width) pos = rect.width;
 
             beforeImage.style.width = `${pos}px`;
             handle.style.left = `${pos}px`;
         };
-
+        
         sliderContainer.addEventListener('mousedown', (e) => {
             isDragging = true;
             moveSlider(e.clientX);

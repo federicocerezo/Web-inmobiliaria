@@ -499,3 +499,43 @@ a:hover {
         text-align: center;
     }
 }
+
+
+/* Corrección del Slider Antes/Después */
+.slider-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left; /* Mantiene la imagen anclada a la izquierda al recortar */
+    display: block;
+}
+
+/* Mejora de Tarjetas de Proyecto */
+.project-card {
+    background: var(--color-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--color-accent);
+}
+
+/* Ajustes de Responsive para Contacto */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    /* El formulario en contact.html ahora tendrá mejor espacio */
+    main div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+    
+    .contact-info {
+        margin-top: var(--spacing-md);
+    }
+}
