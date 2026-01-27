@@ -1,0 +1,501 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+    /* Colors */
+    --color-bg: #FDFDFB;
+    /* Warm white/cream */
+    --color-bg-secondary: #F5F5F2;
+    --color-text: #1C1C1C;
+    /* Soft charcoal */
+    --color-text-secondary: #666666;
+    --color-accent: #A69E90;
+    /* Muted gold/beige */
+    --color-border: #E5E5E5;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+
+    /* Container */
+    --container-width: 1440px;
+    --container-padding: 2rem;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    /* Light feel */
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-secondary);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* Utilities */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+
+.btn-primary {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+
+/* Main Layout Styles */
+
+/* Header */
+.site-header {
+    background-color: var(--color-bg);
+    padding: var(--spacing-sm) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+}
+
+.main-nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.main-nav a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn-link {
+    border-bottom: 1px solid var(--color-text);
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9);
+    /* Slight dim for text readiness */
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+    /* White text over image if image is dark, but prompt says "soft golden hour". Let's assume white text with shadow or dark text if image is light. Prompt: "bright, cream". Text should probably be charcoal if overlay is light or white with overlay. Let's use a subtle overlay. */
+    z-index: 1;
+    max-width: 800px;
+}
+
+/* Overlay for Hero readability */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero .subtitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: #f0f0f0;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+.hero .btn {
+    border-color: #fff;
+    color: #fff;
+}
+
+.hero .btn:hover {
+    background-color: #fff;
+    color: var(--color-text);
+}
+
+/* KPI Strip */
+.kpi-strip {
+    padding: var(--spacing-lg) 0;
+    background-color: var(--color-bg-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    gap: var(--spacing-md);
+}
+
+.kpi-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.kpi-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+}
+
+/* Value Prop */
+.value-prop {
+    margin-bottom: var(--spacing-xl);
+}
+
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.value-item h3 {
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    /* Small accent line */
+    display: inline-block;
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Featured Projects */
+.featured-projects {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg) 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: var(--spacing-md);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.project-card {
+    display: block;
+}
+
+/* Before/After Slider */
+.slider-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    cursor: col-resize;
+}
+
+.slider-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slider-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-image.before {
+    width: 50%;
+    /* Initial state */
+    z-index: 2;
+    border-right: 2px solid #fff;
+}
+
+.slider-image.after {
+    z-index: 1;
+}
+
+/* Fix for image scaling inside clipped container */
+.slider-image.before img {
+    width: 200%;
+    /* If container is 50%, image needs to be 200% to maintain aspect ratio relative to full width? No, this approach is tricky via CSS only. 
+                 Better approach: Both images are full width, but the 'before' container is clipped using width. 
+                 If 'before' container width changes, the img inside it must remain full screen width. 
+                 So 'before' img width needs to be fixed to the slider-container width. 
+                 We will handle this via JS or using `width: 100vw` or fixed pixles. 
+                 Actually, simpler: Set 'before' img width to the width of the main container via JS or 
+                 just use `width: 100%` of parent and resize parent? No, that squishes.
+                 Correct way: `width: 100%; height: 100%; object-fit: cover;` is standard.
+                 BUT if the container (.slider-image.before) is resized, `width: 100%` on the img will shrink the image.
+                 So the img inside .slider-image.before must have the width of the .slider-container, not its parent.
+                 We can set `.slider-image.before img { width: [containerWidth]px; max-width: none; }` via JS.
+                 */
+}
+
+.slider-label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.slider-image.after .slider-label {
+    left: auto;
+    right: 1rem;
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-handle::after {
+    content: '< >';
+    background: #fff;
+    color: #000;
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.project-image-container {
+    overflow: hidden;
+    margin-bottom: var(--spacing-sm);
+    aspect-ratio: 4/3;
+}
+
+.project-card img {
+    transition: transform 0.6s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.project-info h4 {
+    margin-bottom: 0.25rem;
+    font-size: 1.2rem;
+}
+
+.project-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+/* Manifesto */
+.manifesto {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-bg-secondary);
+    /* Added background to separate blocks */
+    margin: var(--spacing-lg) 0;
+    /* Add margin around it if preferred, or keep full width */
+}
+
+.manifesto-text {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    line-height: 1.4;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-md) auto;
+    font-style: italic;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #1a1a1a;
+    /* Dark footer */
+    color: #fff;
+    padding: var(--spacing-lg) 0;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+.footer-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+}
+
+.footer-col ul li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-col a:hover {
+    color: var(--color-accent);
+}
+
+.contact-info a {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .value-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
