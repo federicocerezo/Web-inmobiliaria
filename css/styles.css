@@ -66,6 +66,7 @@ a:hover {
 }
 
 /* Utilities */
+
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
@@ -108,7 +109,6 @@ a:hover {
 
 /* Main Layout Styles */
 
-/* Header */
 .site-header {
     background-color: var(--color-bg);
     padding: var(--spacing-sm) 0;
@@ -127,9 +127,57 @@ a:hover {
 .logo {
     font-family: var(--font-heading);
     font-size: 1.5rem;
+    color: inherit;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 2px;
+    transition: transform 0.3s ease;
+}
+
+.logo-text {
+    display: flex;
+    letter-spacing: 0.2em;
+}
+
+.logo span {
+    font-weight: 300;
+    opacity: 0.7;
+    transition: all 0.4s ease;
+}
+
+.logo b {
     font-weight: 600;
-    letter-spacing: 0.05em;
-    color: var(--color-text);
+    margin-left: 0.4em;
+    letter-spacing: 0.3em;
+    transition: all 0.4s ease;
+}
+
+.logo::after {
+    content: '';
+    width: 0px; 
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.5s ease;
+}
+
+.logo:hover {
+    transform: translateY(-2px); 
+}
+
+.logo:hover::after {
+    width: 100%;
+}
+
+.logo:hover span {
+    opacity: 1;
+    letter-spacing: 0.25em; 
+}
+
+.logo:hover b {
+    color: var(--color-accent); 
 }
 
 .main-nav ul {
@@ -144,11 +192,52 @@ a:hover {
     letter-spacing: 0.05em;
 }
 
+.main-nav ul li a {
+    position: relative;
+    padding: 0.5rem 0;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; 
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.main-nav ul li a:hover {
+    color: var(--color-text); 
+    opacity: 1; 
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%; 
+}
+
+.main-nav a.btn-link {
+    border-bottom: none; 
+}
+
+.main-nav ul li {
+    animation: navFadeIn 0.8s ease forwards;
+    opacity: 0;
+}
+
+.main-nav ul li:nth-child(1) { animation-delay: 0.1s; }
+.main-nav ul li:nth-child(2) { animation-delay: 0.2s; }
+.main-nav ul li:nth-child(3) { animation-delay: 0.3s; }
+.main-nav ul li:nth-child(4) { animation-delay: 0.4s; }
+
 .btn-link {
     border-bottom: 1px solid var(--color-text);
 }
 
-/* Hero */
 .hero {
     position: relative;
     height: 90vh;
@@ -173,18 +262,15 @@ a:hover {
     height: 100%;
     object-fit: cover;
     filter: brightness(0.9);
-    /* Slight dim for text readiness */
 }
 
 .hero-content {
     text-align: center;
     color: #fff;
-    /* White text over image if image is dark, but prompt says "soft golden hour". Let's assume white text with shadow or dark text if image is light. Prompt: "bright, cream". Text should probably be charcoal if overlay is light or white with overlay. Let's use a subtle overlay. */
     z-index: 1;
     max-width: 800px;
 }
 
-/* Overlay for Hero readability */
 .hero::after {
     content: '';
     position: absolute;
@@ -222,7 +308,6 @@ a:hover {
     color: var(--color-text);
 }
 
-/* KPI Strip */
 .kpi-strip {
     padding: var(--spacing-lg) 0;
     background-color: var(--color-bg-secondary);
@@ -251,7 +336,6 @@ a:hover {
     color: var(--color-text-secondary);
 }
 
-/* Value Prop */
 .value-prop {
     margin-bottom: var(--spacing-xl);
 }
@@ -265,13 +349,11 @@ a:hover {
 .value-item h3 {
     font-size: 1.5rem;
     border-bottom: 2px solid var(--color-accent);
-    /* Small accent line */
     display: inline-block;
     padding-bottom: var(--spacing-xs);
     margin-bottom: var(--spacing-sm);
 }
 
-/* Featured Projects */
 .featured-projects {
     margin-bottom: var(--spacing-xl);
     padding: var(--spacing-lg) 0;
@@ -292,101 +374,6 @@ a:hover {
 
 .project-card {
     display: block;
-}
-
-/* Before/After Slider */
-.slider-container {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-    cursor: col-resize;
-}
-
-.slider-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.slider-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.slider-image.before {
-    width: 50%;
-    /* Initial state */
-    z-index: 2;
-    border-right: 2px solid #fff;
-}
-
-.slider-image.after {
-    z-index: 1;
-}
-
-/* Fix for image scaling inside clipped container */
-.slider-image.before img {
-    width: 200%;
-    /* If container is 50%, image needs to be 200% to maintain aspect ratio relative to full width? No, this approach is tricky via CSS only. 
-                 Better approach: Both images are full width, but the 'before' container is clipped using width. 
-                 If 'before' container width changes, the img inside it must remain full screen width. 
-                 So 'before' img width needs to be fixed to the slider-container width. 
-                 We will handle this via JS or using `width: 100vw` or fixed pixles. 
-                 Actually, simpler: Set 'before' img width to the width of the main container via JS or 
-                 just use `width: 100%` of parent and resize parent? No, that squishes.
-                 Correct way: `width: 100%; height: 100%; object-fit: cover;` is standard.
-                 BUT if the container (.slider-image.before) is resized, `width: 100%` on the img will shrink the image.
-                 So the img inside .slider-image.before must have the width of the .slider-container, not its parent.
-                 We can set `.slider-image.before img { width: [containerWidth]px; max-width: none; }` via JS.
-                 */
-}
-
-.slider-label {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    pointer-events: none;
-}
-
-.slider-image.after .slider-label {
-    left: auto;
-    right: 1rem;
-}
-
-.slider-handle {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 3;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slider-handle::after {
-    content: '< >';
-    background: #fff;
-    color: #000;
-    padding: 0.5rem;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    font-weight: bold;
-    white-space: nowrap;
 }
 
 .project-image-container {
@@ -416,13 +403,10 @@ a:hover {
     color: var(--color-text-secondary);
 }
 
-/* Manifesto */
 .manifesto {
     padding: var(--spacing-xl) 0;
     background-color: var(--color-bg-secondary);
-    /* Added background to separate blocks */
     margin: var(--spacing-lg) 0;
-    /* Add margin around it if preferred, or keep full width */
 }
 
 .manifesto-text {
@@ -434,10 +418,8 @@ a:hover {
     font-style: italic;
 }
 
-/* Footer */
 .site-footer {
     background-color: #1a1a1a;
-    /* Dark footer */
     color: #fff;
     padding: var(--spacing-lg) 0;
 }
@@ -446,11 +428,6 @@ a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--spacing-lg);
-}
-
-.footer-logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
 }
 
 .footer-col ul li {
@@ -465,52 +442,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .main-nav ul {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .kpi-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .value-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-}
-
-
-/* Corrección del Slider Antes/Después */
-.slider-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left; /* Mantiene la imagen anclada a la izquierda al recortar */
-    display: block;
-}
-
-/* Mejora de Tarjetas de Proyecto */
 .project-card {
     background: var(--color-bg);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -523,23 +454,6 @@ a:hover {
     border-bottom: 1px solid var(--color-accent);
 }
 
-/* Ajustes de Responsive para Contacto */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 1.5rem;
-    }
-    
-    /* El formulario en contact.html ahora tendrá mejor espacio */
-    main div[style*="grid-template-columns: 1fr 1fr"] {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-md) !important;
-    }
-    
-    .contact-info {
-        margin-top: var(--spacing-md);
-    }
-}
-/* Galería de Activos Terminados */
 .gallery-container {
     position: relative;
     width: 100%;
@@ -569,7 +483,6 @@ a:hover {
     object-fit: cover;
 }
 
-/* Navegación Refinada */
 .gallery-nav {
     position: absolute;
     top: 50%;
@@ -606,131 +519,6 @@ a:hover {
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-@media (max-width: 768px) {
-    .gallery-container { aspect-ratio: 4/3; }
-    .gallery-nav { padding: 1rem; }
-}
-
-/* --- REDISEÑO LOGO PREMIUM CON ANIMACIÓN --- */
-.logo {
-    font-family: var(--font-heading); /* Playfair Display */
-    font-size: 1.5rem;
-    color: var(--color-text);
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-flex;
-    flex-direction: column; /* Para alinear la línea debajo */
-    align-items: center;
-    gap: 2px;
-    transition: transform 0.3s ease;
-}
-
-/* Contenedor del texto */
-.logo-text {
-    display: flex;
-    letter-spacing: 0.2em;
-}
-
-/* Palabra: DILUS (Fina y elegante) */
-.logo span {
-    font-weight: 300;
-    opacity: 0.7;
-    transition: all 0.4s ease;
-}
-
-/* Palabra: LIVING (Sólida y con cuerpo) */
-.logo b {
-    font-weight: 600;
-    margin-left: 0.4em;
-    letter-spacing: 0.3em;
-    transition: all 0.4s ease;
-}
-
-/* Línea decorativa inferior */
-.logo::after {
-    content: '';
-    width: 0px; /* Tamaño inicial corto */
-    height: 1px;
-    background-color: var(--color-accent);
-    transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* --- EFECTOS HOVER --- */
-.logo:hover {
-    transform: translateY(-2px); /* Sutil levantamiento */
-}
-
-.logo:hover::after {
-    width: 100%; /* La línea se expande a todo el ancho */
-}
-
-.logo:hover span {
-    opacity: 1;
-    letter-spacing: 0.25em; /* Las letras se separan un poco más */
-}
-
-.logo:hover b {
-    color: var(--color-accent); /* Cambio de color sutil */
-}
-
-@media (max-width: 768px) {
-    .logo {
-        font-size: 1.2rem;
-    }
-    .logo::after {
-        width: 15px;
-    }
-}
-
-/* --- ANIMACIÓN PREMIUM PARA NAVEGACIÓN PRINCIPAL --- */
-
-.main-nav ul li a {
-    position: relative;
-    padding: 0.5rem 0;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    transition: color 0.3s ease;
-}
-
-/* La línea animada debajo de cada enlace */
-.main-nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0; /* Empieza invisible */
-    height: 1px;
-    background-color: var(--color-accent);
-    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* --- EFECTOS HOVER --- */
-
-.main-nav ul li a:hover {
-    color: var(--color-text); /* Asegura que el texto sea nítido */
-    opacity: 1; /* Sobrescribe el opacity: 0.7 general de los 'a' en tus estilos actuales */
-}
-
-.main-nav ul li a:hover::after {
-    width: 100%; /* La línea se expande al ancho completo del texto */
-}
-
-/* Ajuste para el botón especial (btn-link) si quieres que mantenga su estilo pero con la nueva animación */
-.main-nav a.btn-link {
-    border-bottom: none; /* Quitamos el borde estático que tenías */
-}
-
-/* Animación de entrada sutil para los elementos del menú al cargar la página */
-.main-nav ul li {
-    animation: navFadeIn 0.8s ease forwards;
-    opacity: 0;
-}
-
-.main-nav ul li:nth-child(1) { animation-delay: 0.1s; }
-.main-nav ul li:nth-child(2) { animation-delay: 0.2s; }
-.main-nav ul li:nth-child(3) { animation-delay: 0.3s; }
-.main-nav ul li:nth-child(4) { animation-delay: 0.4s; }
-
 @keyframes navFadeIn {
     from {
         opacity: 0;
@@ -741,3 +529,47 @@ a:hover {
         transform: translateY(0);
     }
 }
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .main-nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .value-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .container {
+        padding: 0 1.5rem;
+    }
+    main div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+    .contact-info {
+        margin-top: var(--spacing-md);
+    }
+    .gallery-container { aspect-ratio: 4/3; }
+    .gallery-nav { padding: 1rem; }
+    .logo { font-size: 1.2rem;}
+    .logo::after {  width: 15px; }
+}
+
+
