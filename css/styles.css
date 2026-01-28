@@ -669,3 +669,120 @@ a:hover {
         transform: translateX(calc(50vw - 50% - 1.5rem)); 
     }
 }
+
+/* Footer Base */
+.site-footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+}
+
+/* Layout de 4 columnas en Desktop */
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Logo | Navegación | Legal | Redes */
+    gap: var(--spacing-lg);
+    align-items: start;
+}
+
+.footer-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-sm);
+    color: #ffffff;
+}
+
+.footer-col ul li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-description {
+    margin-top: var(--spacing-sm);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.footer-bottom {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* Comportamiento Responsivo (Móvil) */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Apilado vertical */
+        text-align: center;
+        gap: var(--spacing-md);
+    }
+
+    .footer-col.identity {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        border-top: none;
+    }
+}
+
+/* Footer Columns - Alineación General */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos al inicio (izquierda) del contenedor flex */
+    text-align: left;        /* Asegura que el texto interno se alinee a la izquierda */
+}
+
+.footer-col ul {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.footer-col ul li {
+    text-align: left;
+    display: block; /* Asegura que cada enlace ocupe su propia línea alineado a la izquierda */
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-start; /* Alinea los iconos de redes a la izquierda */
+}
+
+/* Corrección para la versión móvil */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        /* Eliminamos 'text-align: center' si estaba presente anteriormente */
+    }
+
+    .footer-col {
+        align-items: flex-start; /* Mantiene la alineación a la izquierda en móvil */
+        text-align: left;
+    }
+
+    .footer-col.identity {
+        align-items: flex-start; /* Asegura que el logo y descripción no se centren en móvil */
+    }
+
+    .social-links {
+        justify-content: flex-start;
+    }
+}
