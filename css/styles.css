@@ -601,10 +601,6 @@ a:hover {
         padding: 0.5rem 1.5rem;
     }
 
-    .menu-toggle {
-        display: block;
-    }
-
     /* Navegación como dropdown que extiende el header */
     .main-nav {
         display: none; /* Oculto por defecto */
@@ -642,5 +638,24 @@ a:hover {
         cursor: pointer;
         color: var(--color-text-secondary);
         padding: 1rem;
+    }
+
+
+    /* Hace el icono de abrir (hamburguesa) más grande */
+    .menu-toggle .material-symbols-outlined {
+        font-size: 35px; /* Ajusta este número según prefieras */
+        display: block;
+    }
+
+    /* Hace el icono de cerrar (la X de abajo) más grande */
+    .menu-close .material-symbols-outlined {
+        font-size: 40px; /* Un tamaño generoso para facilitar el cierre */
+    }
+
+    /* Ajuste para que el botón tenga un área de clic cómoda */
+    .menu-toggle {
+        display: block;
+        padding: 8px; 
+        line-height: 0;
     }
 }
