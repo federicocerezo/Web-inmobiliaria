@@ -137,6 +137,11 @@ a:hover {
     transition: transform 0.3s ease;
 }
 
+.logo {
+    transition: transform 0.4s ease-in-out; /* Animación suave */
+    z-index: 102; /* Asegura que esté por encima del menú si es necesario */
+}
+
 .logo-text {
     display: flex;
     letter-spacing: 0.2em;
@@ -657,5 +662,10 @@ a:hover {
         display: block;
         padding: 8px; 
         line-height: 0;
+    }
+    .menu-open .logo {
+        /* Este valor puede variar según el tamaño de tu logo. 
+           50vw lo lleva al centro de la pantalla, restando un poco de su propio tamaño */
+        transform: translateX(calc(50vw - 50% - 1.5rem)); 
     }
 }

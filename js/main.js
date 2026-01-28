@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const menuClose = document.querySelector('.menu-close');
     const mainNav = document.querySelector('.main-nav');
+    const header = document.querySelector('.site-header');
     const slides = document.querySelectorAll('.gallery-slide');
     const counter = document.querySelector('.gallery-counter');
     const nextBtn = document.querySelector('.gallery-nav.next');
@@ -12,12 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             mainNav.classList.toggle('is-active');
             menuToggle.classList.add('hidden-icon');
+            header.classList.add('menu-open');
         });
 
         // Cerrar menú con el icono de abajo
         menuClose?.addEventListener('click', () => {
             mainNav.classList.remove('is-active');
             menuToggle.classList.remove('hidden-icon');
+            header.classList.remove('menu-open');
         });
 
         // Cerrar menú si se hace clic en un enlace
@@ -26,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 mainNav.classList.remove('is-active');
                 menuToggle.classList.remove('hidden-icon');
+                header.classList.remove('menu-open');
             });
         });
     }
