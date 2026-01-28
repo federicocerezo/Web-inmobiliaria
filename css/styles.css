@@ -569,7 +569,7 @@ a:hover {
     .gallery-container { aspect-ratio: 4/3; }
     .gallery-nav { padding: 1rem; }
     .logo { font-size: 1.2rem;}
-    .logo::after {  width: 15px; }
+    .logo::after {  width: 0px; }
 }
 
 
