@@ -610,3 +610,134 @@ a:hover {
     .gallery-container { aspect-ratio: 4/3; }
     .gallery-nav { padding: 1rem; }
 }
+
+/* --- REDISEÑO LOGO PREMIUM CON ANIMACIÓN --- */
+.logo {
+    font-family: var(--font-heading); /* Playfair Display */
+    font-size: 1.5rem;
+    color: var(--color-text);
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    flex-direction: column; /* Para alinear la línea debajo */
+    align-items: center;
+    gap: 2px;
+    transition: transform 0.3s ease;
+}
+
+/* Contenedor del texto */
+.logo-text {
+    display: flex;
+    letter-spacing: 0.2em;
+}
+
+/* Palabra: DILUS (Fina y elegante) */
+.logo span {
+    font-weight: 300;
+    opacity: 0.7;
+    transition: all 0.4s ease;
+}
+
+/* Palabra: LIVING (Sólida y con cuerpo) */
+.logo b {
+    font-weight: 600;
+    margin-left: 0.4em;
+    letter-spacing: 0.3em;
+    transition: all 0.4s ease;
+}
+
+/* Línea decorativa inferior */
+.logo::after {
+    content: '';
+    width: 20px; /* Tamaño inicial corto */
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- EFECTOS HOVER --- */
+.logo:hover {
+    transform: translateY(-2px); /* Sutil levantamiento */
+}
+
+.logo:hover::after {
+    width: 100%; /* La línea se expande a todo el ancho */
+}
+
+.logo:hover span {
+    opacity: 1;
+    letter-spacing: 0.25em; /* Las letras se separan un poco más */
+}
+
+.logo:hover b {
+    color: var(--color-accent); /* Cambio de color sutil */
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+    .logo::after {
+        width: 15px;
+    }
+}
+
+/* --- ANIMACIÓN PREMIUM PARA NAVEGACIÓN PRINCIPAL --- */
+
+.main-nav ul li a {
+    position: relative;
+    padding: 0.5rem 0;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+}
+
+/* La línea animada debajo de cada enlace */
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Empieza invisible */
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- EFECTOS HOVER --- */
+
+.main-nav ul li a:hover {
+    color: var(--color-text); /* Asegura que el texto sea nítido */
+    opacity: 1; /* Sobrescribe el opacity: 0.7 general de los 'a' en tus estilos actuales */
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%; /* La línea se expande al ancho completo del texto */
+}
+
+/* Ajuste para el botón especial (btn-link) si quieres que mantenga su estilo pero con la nueva animación */
+.main-nav a.btn-link {
+    border-bottom: none; /* Quitamos el borde estático que tenías */
+}
+
+/* Animación de entrada sutil para los elementos del menú al cargar la página */
+.main-nav ul li {
+    animation: navFadeIn 0.8s ease forwards;
+    opacity: 0;
+}
+
+.main-nav ul li:nth-child(1) { animation-delay: 0.1s; }
+.main-nav ul li:nth-child(2) { animation-delay: 0.2s; }
+.main-nav ul li:nth-child(3) { animation-delay: 0.3s; }
+.main-nav ul li:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes navFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
