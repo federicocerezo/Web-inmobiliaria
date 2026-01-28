@@ -1,8 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuClose = document.querySelector('.menu-close');
+    const mainNav = document.querySelector('.main-nav');
     const slides = document.querySelectorAll('.gallery-slide');
     const counter = document.querySelector('.gallery-counter');
     const nextBtn = document.querySelector('.gallery-nav.next');
     const prevBtn = document.querySelector('.gallery-nav.prev');
+
+    if (menuToggle && mainNav) {
+        // Abrir menú
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('is-active');
+            menuToggle.classList.add('hidden-icon');
+        });
+
+        // Cerrar menú con el icono de abajo
+        menuClose?.addEventListener('click', () => {
+            mainNav.classList.remove('is-active');
+            menuToggle.classList.remove('hidden-icon');
+        });
+
+        // Cerrar menú si se hace clic en un enlace
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('is-active');
+                menuToggle.classList.remove('hidden-icon');
+            });
+        });
+    }
     
     if (slides.length > 0) {
         let currentIndex = 0;
