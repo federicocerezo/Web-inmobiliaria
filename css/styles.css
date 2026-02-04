@@ -786,3 +786,29 @@ a:hover {
         justify-content: flex-start;
     }
 }
+
+.gallery-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2); /* Fondo sutil para mejorar legibilidad */
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    padding: 0; /* Limpiamos el padding antiguo */
+}
+
+.gallery-nav .material-symbols-outlined {
+    font-size: 20px; /* Tamaño del icono */
+    color: #fff;
+}
+
+/* Ajuste específico para centrar visualmente el icono de 'back' */
+.gallery-nav.prev .material-symbols-outlined {
+    margin-right: 2px; 
+}
+
+.gallery-nav:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%) scale(1.1);
+}
