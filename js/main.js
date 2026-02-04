@@ -1,12 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- LÓGICA DEL MENÚ ---
     const menuToggle = document.querySelector('.menu-toggle');
     const menuClose = document.querySelector('.menu-close');
     const mainNav = document.querySelector('.main-nav');
     const header = document.querySelector('.site-header');
-    const slides = document.querySelectorAll('.gallery-slide');
-    const counter = document.querySelector('.gallery-counter');
-    const nextBtn = document.querySelector('.gallery-nav.next');
-    const prevBtn = document.querySelector('.gallery-nav.prev');
 
     if (menuToggle && mainNav) {
         // Abrir menú
@@ -34,7 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    if (slides.length > 0) {
+    // --- LÓGICA DE MULTI-GALERÍAS ---
+    const galleries = document.querySelectorAll('.gallery-container');
+
+    galleries.forEach(gallery => {
+        const slides = gallery.querySelectorAll('.gallery-slide');
+        const counter = gallery.querySelector('.gallery-counter');
+        const nextBtn = gallery.querySelector('.gallery-nav.next');
+        const prevBtn = gallery.querySelector('.gallery-nav.prev');
         let currentIndex = 0;
 
         const updateGallery = (index) => {
@@ -45,20 +49,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        nextBtn?.addEventListener('click', () => {
+        nextBtn?.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita comportamientos no deseados en móviles
             currentIndex = (currentIndex + 1) % slides.length;
             updateGallery(currentIndex);
         });
 
-        prevBtn?.addEventListener('click', () => {
+        prevBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
             currentIndex = (currentIndex - 1 + slides.length) % slides.length;
             updateGallery(currentIndex);
         });
-
-        // Soporte para flechas del teclado
-        document.addEventListener('keydown', (e) => {
-            if (e.key === "ArrowRight") nextBtn?.click();
-            if (e.key === "ArrowLeft") prevBtn?.click();
-        });
-    }
+    });
 });
