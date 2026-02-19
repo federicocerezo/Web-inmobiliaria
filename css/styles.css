@@ -134,12 +134,8 @@ a:hover {
     flex-direction: column; 
     align-items: center;
     gap: 2px;
-    transition: transform 0.3s ease;
-}
-
-.logo {
-    transition: transform 0.4s ease-in-out; /* Animación suave */
-    z-index: 102; /* Asegura que esté por encima del menú si es necesario */
+    transition: transform 0.4s ease-in-out; 
+    z-index: 102; 
 }
 
 .logo-text {
@@ -280,7 +276,7 @@ a:hover {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 0;
 }
 
@@ -379,6 +375,9 @@ a:hover {
 
 .project-card {
     display: block;
+    background: var(--color-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 1px solid transparent;
 }
 
 .project-image-container {
@@ -392,6 +391,12 @@ a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--color-accent);
 }
 
 .project-card:hover img {
@@ -423,12 +428,6 @@ a:hover {
     font-style: italic;
 }
 
-.site-footer {
-    background-color: #1a1a1a;
-    color: #fff;
-    padding: var(--spacing-lg) 0;
-}
-
 .footer-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -445,18 +444,6 @@ a:hover {
 
 .contact-info a {
     text-decoration: underline;
-}
-
-.project-card {
-    background: var(--color-bg);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-bottom: 1px solid transparent;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border-bottom: 1px solid var(--color-accent);
 }
 
 .gallery-container {
