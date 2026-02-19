@@ -600,49 +600,75 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+    .site-header {
+        /* Aseguramos que el header no tape el menú si usamos position fixed */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
     .header-container {
-        flex-direction: row !important; /* Logo y hamburguesa en la misma línea */
-        justify-content: space-between;
+        display: flex;
+        justify-content: center; /* Centra el logo por defecto */
+        align-items: center;
+        position: relative;
         padding: 0.5rem 1.5rem;
     }
 
-    /* Navegación como dropdown que extiende el header */
     .main-nav {
-        display: none; /* Oculto por defecto */
-        position: absolute;
-        top: 100%; /* Justo debajo del header */
+        display: none;
+        position: fixed; /* Ocupa toda la pantalla */
+        top: 0;
         left: 0;
         width: 100%;
+        height: 100vh;
         background-color: var(--color-bg);
-        border-bottom: 1px solid var(--color-border);
-        padding: var(--spacing-md) 0;
-        z-index: 99;
+        padding: var(--spacing-xl) 1.5rem; /* Margen lateral para alinear contenido */
+        z-index: 1000;
+        overflow-y: auto;
     }
 
-    /* Cuando el menú está activo */
-    .main-nav.is-active {
-        display: block;
-        animation: navFadeIn 0.3s ease-out;
+   .main-nav.is-active {
+        display: flex; /* Usamos flex para controlar mejor la estructura interna */
+        flex-direction: column;
+        align-items: flex-start; /* Alineación a la izquierda */
+        animation: navFadeIn 0.4s ease-out;
     }
 
     .main-nav ul {
         flex-direction: column;
-        gap: var(--spacing-sm);
-        align-items: center; /* Elementos centrados */
-        text-align: center;
+        gap: var(--spacing-md); /* Más espacio entre opciones */
+        align-items: flex-start; /* Alinea los <li> a la izquierda */
+        text-align: left;
+        width: 100%;
+        margin-top: var(--spacing-lg); /* Margen respecto al logo/tope */
+    }
+
+    .main-nav ul li {
+        width: 100%;
+        opacity: 0;
+        animation: navFadeIn 0.5s ease forwards;
+    }
+    .main-nav ul li a {
+        font-size: 1.2rem; /* Tamaño más legible para menús de pantalla completa */
+        display: block;
+        padding: 0.5rem 0;
     }
 
     .mobile-only {
         display: block;
-        margin-top: var(--spacing-sm);
+        position: absolute;
+        top: 1rem; /* Alineado verticalmente con el logo aprox. */
+        left: 1.5rem;
+        z-index: 1003;
     }
 
     .menu-close {
         background: none;
         border: none;
         cursor: pointer;
-        color: var(--color-text-secondary);
-        padding: 1rem;
+        padding: 0;
+        color: var(--color-text);
     }
 
 
@@ -652,21 +678,28 @@ a:hover {
         display: block;
     }
 
-    /* Hace el icono de cerrar (la X de abajo) más grande */
     .menu-close .material-symbols-outlined {
-        font-size: 40px; /* Un tamaño generoso para facilitar el cierre */
+        font-size: 2.5rem;
+        color: var(--color-text);
     }
 
     /* Ajuste para que el botón tenga un área de clic cómoda */
     .menu-toggle {
         display: block;
-        padding: 8px; 
+        position: absolute;
+        left: 1.5rem;
+        padding: 8px;
         line-height: 0;
+        z-index: 1001;
     }
-    .menu-open .logo {
-        /* Este valor puede variar según el tamaño de tu logo. 
-           50vw lo lleva al centro de la pantalla, restando un poco de su propio tamaño */
-        transform: translateX(calc(50vw - 50% - 1.5rem)); 
+    
+    .logo {
+        transform: none !important; /* Eliminamos desplazamientos previos */
+        z-index: 1002;
+    }
+
+    body.menu-open-fixed {
+        overflow: hidden;
     }
 }
 
@@ -811,4 +844,8 @@ a:hover {
 .gallery-nav:hover {
     background: rgba(0, 0, 0, 0.5);
     transform: translateY(-50%) scale(1.1);
+}
+
+body.no-scroll {
+    overflow: hidden;
 }

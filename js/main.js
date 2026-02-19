@@ -115,4 +115,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    // Actualiza esta sección en tu js/main.js
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.add('is-active');
+            header.classList.add('menu-open');
+            document.body.classList.add('menu-open-fixed'); // Bloquea scroll
+            menuToggle.classList.add('hidden-icon');
+        });
+
+        menuClose?.addEventListener('click', () => {
+            mainNav.classList.remove('is-active');
+            header.classList.remove('menu-open');
+            document.body.classList.remove('menu-open-fixed'); // Libera scroll
+            menuToggle.classList.remove('hidden-icon');
+        });
+
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('is-active');
+                header.classList.remove('menu-open');
+                document.body.classList.remove('menu-open-fixed');
+                menuToggle.classList.remove('hidden-icon');
+            });
+        });
+    }
 });
