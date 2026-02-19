@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 try {
                     // Reemplaza los IDs con los de tu cuenta de EmailJS
                     const response = await emailjs.sendForm(
-                        'YOUR_SERVICE_ID', 
-                        'YOUR_TEMPLATE_ID', 
+                        "service_g7fxl9p",
+                        "template_3yadwfc", 
                         form
                     );
 
