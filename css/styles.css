@@ -356,6 +356,12 @@ a:hover {
     margin-bottom: var(--spacing-sm);
 }
 
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
 .featured-projects {
     margin-bottom: var(--spacing-xl);
     padding: var(--spacing-lg) 0;
@@ -775,9 +781,10 @@ body.no-scroll {
     .social-links {
         justify-content: flex-start;
     }
-    main div[style*="grid-template-columns: 1fr 1fr"] {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-md) !important;
+
+    .grid-2-col {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
 }
 
