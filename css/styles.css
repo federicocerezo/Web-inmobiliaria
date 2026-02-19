@@ -83,6 +83,7 @@ a:hover {
 }
 
 /* Buttons */
+
 .btn {
     display: inline-block;
     padding: 1rem 2rem;
@@ -428,20 +429,6 @@ a:hover {
     font-style: italic;
 }
 
-.footer-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--spacing-lg);
-}
-
-.footer-col ul li {
-    margin-bottom: var(--spacing-xs);
-}
-
-.footer-col a:hover {
-    color: var(--color-accent);
-}
-
 .contact-info a {
     text-decoration: underline;
 }
@@ -476,27 +463,49 @@ a:hover {
 }
 
 .gallery-nav {
+    /* Posicionamiento */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: transparent;
+    z-index: 10;
+
+    /* Dimensiones y Forma */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
     border: none;
+    padding: 0;
+
+    /* Estética */
+    background: rgba(0, 0, 0, 0.2);
     color: #fff;
     font-size: 2rem;
     cursor: pointer;
-    padding: 2rem;
-    z-index: 10;
-    transition: all 0.3s ease;
     opacity: 0.7;
+    
+    /* Animación */
+    transition: all 0.3s ease;
 }
 
 .gallery-nav:hover {
-    opacity: 1;
+    background: rgba(0, 0, 0, 0.5);
     transform: translateY(-50%) scale(1.1);
 }
 
 .gallery-nav.prev { left: 1rem; }
 .gallery-nav.next { right: 1rem; }
+
+.gallery-nav .material-symbols-outlined {
+    font-size: 20px; /* Tamaño del icono */
+    color: #fff;
+}
+
+.gallery-nav.prev .material-symbols-outlined {
+    margin-right: 2px; 
+}
 
 .gallery-counter {
     position: absolute;
@@ -511,61 +520,6 @@ a:hover {
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-@keyframes navFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    .main-nav ul {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .hero h1 {
-        font-size: 2rem;
-    }
-    .kpi-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .value-grid {
-        grid-template-columns: 1fr;
-    }
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .container {
-        padding: 0 1.5rem;
-    }
-    main div[style*="grid-template-columns: 1fr 1fr"] {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-md) !important;
-    }
-    .contact-info {
-        margin-top: var(--spacing-md);
-    }
-    .gallery-container { aspect-ratio: 4/3; }
-    .gallery-nav { padding: 1rem; }
-    .logo { font-size: 1.2rem;}
-    .logo::after {  width: 0px; }
-}
-
-
-/* Estilos base para el botón del menú */
 .menu-toggle {
     display: none;
     background: none;
@@ -576,6 +530,7 @@ a:hover {
     transition: opacity 0.3s ease, transform 0.3s ease; 
     z-index: 101; /* Asegurar que esté por encima */
 }
+
 .menu-toggle.hidden-icon {
     opacity: 0;
     transform: scale(0.5);
@@ -586,118 +541,12 @@ a:hover {
     display: none;
 }
 
-@media (max-width: 768px) {
-    .site-header {
-        /* Aseguramos que el header no tape el menú si usamos position fixed */
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-
-    .header-container {
-        display: flex;
-        justify-content: center; /* Centra el logo por defecto */
-        align-items: center;
-        position: relative;
-        padding: 0.5rem 1.5rem;
-    }
-
-    .main-nav {
-        display: none;
-        position: fixed; /* Ocupa toda la pantalla */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: var(--color-bg);
-        padding: var(--spacing-xl) 1.5rem; /* Margen lateral para alinear contenido */
-        z-index: 1000;
-        overflow-y: auto;
-    }
-
-   .main-nav.is-active {
-        display: flex; /* Usamos flex para controlar mejor la estructura interna */
-        flex-direction: column;
-        align-items: flex-start; /* Alineación a la izquierda */
-        animation: navFadeIn 0.4s ease-out;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        gap: var(--spacing-md); /* Más espacio entre opciones */
-        align-items: flex-start; /* Alinea los <li> a la izquierda */
-        text-align: left;
-        width: 100%;
-        margin-top: var(--spacing-lg); /* Margen respecto al logo/tope */
-    }
-
-    .main-nav ul li {
-        width: 100%;
-        opacity: 0;
-        animation: navFadeIn 0.5s ease forwards;
-    }
-    .main-nav ul li a {
-        font-size: 1.2rem; /* Tamaño más legible para menús de pantalla completa */
-        display: block;
-        padding: 0.5rem 0;
-    }
-
-    .mobile-only {
-        display: block;
-        position: absolute;
-        top: 1rem; /* Alineado verticalmente con el logo aprox. */
-        left: 1.5rem;
-        z-index: 1003;
-    }
-
-    .menu-close {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        color: var(--color-text);
-    }
-
-
-    /* Hace el icono de abrir (hamburguesa) más grande */
-    .menu-toggle .material-symbols-outlined {
-        font-size: 35px; /* Ajusta este número según prefieras */
-        display: block;
-    }
-
-    .menu-close .material-symbols-outlined {
-        font-size: 2.5rem;
-        color: var(--color-text);
-    }
-
-    /* Ajuste para que el botón tenga un área de clic cómoda */
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        left: 1.5rem;
-        padding: 8px;
-        line-height: 0;
-        z-index: 1001;
-    }
-    
-    .logo {
-        transform: none !important; /* Eliminamos desplazamientos previos */
-        z-index: 1002;
-    }
-
-    body.menu-open-fixed {
-        overflow: hidden;
-    }
-}
-
-/* Footer Base */
 .site-footer {
     background-color: #1a1a1a;
     color: #fff;
     padding: var(--spacing-lg) 0 var(--spacing-md);
 }
 
-/* Layout de 4 columnas en Desktop */
 .footer-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Logo | Navegación | Legal | Redes */
@@ -713,19 +562,10 @@ a:hover {
     color: #ffffff;
 }
 
-.footer-col ul li {
-    margin-bottom: var(--spacing-xs);
-}
-
 .footer-description {
     margin-top: var(--spacing-sm);
     font-size: 0.9rem;
     opacity: 0.8;
-}
-
-.social-links {
-    display: flex;
-    gap: var(--spacing-sm);
 }
 
 .footer-bottom {
@@ -737,35 +577,11 @@ a:hover {
     opacity: 0.6;
 }
 
-/* Comportamiento Responsivo (Móvil) */
-@media (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: 1fr; /* Apilado vertical */
-        text-align: center;
-        gap: var(--spacing-md);
-    }
-
-    .footer-col.identity {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
-    .footer-bottom {
-        border-top: none;
-    }
-}
-
-/* Footer Columns - Alineación General */
 .footer-col {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinea los elementos al inicio (izquierda) del contenedor flex */
-    text-align: left;        /* Asegura que el texto interno se alinee a la izquierda */
+    align-items: flex-start; 
+    text-align: left;        
 }
 
 .footer-col ul {
@@ -775,64 +591,203 @@ a:hover {
 }
 
 .footer-col ul li {
+    margin-bottom: var(--spacing-xs);
     text-align: left;
-    display: block; /* Asegura que cada enlace ocupe su propia línea alineado a la izquierda */
+    display: block; 
+}
+
+.footer-col a:hover {
+    color: var(--color-accent);
 }
 
 .social-links {
     display: flex;
     gap: var(--spacing-sm);
-    justify-content: flex-start; /* Alinea los iconos de redes a la izquierda */
+    justify-content: flex-start; 
 }
 
-/* Corrección para la versión móvil */
+body.no-scroll {
+    overflow: hidden;
+}
+
 @media (max-width: 768px) {
+
+    /* =========================
+       LAYOUT GENERAL
+    ========================= */
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .value-grid,
+    .project-grid,
     .footer-container {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
-        /* Eliminamos 'text-align: center' si estaba presente anteriormente */
     }
 
-    .footer-col {
-        align-items: flex-start; /* Mantiene la alineación a la izquierda en móvil */
-        text-align: left;
+    .contact-info {
+        margin-top: var(--spacing-md);
     }
 
+    .gallery-container {
+        aspect-ratio: 4/3;
+    }
+
+    .gallery-nav {
+        padding: 1rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        transform: none;
+        z-index: 1002;
+    }
+
+    .logo::after {
+        width: 0;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        position: relative;
+        padding: 0.5rem 1.5rem;
+    }
+
+
+    /* =========================
+       MOBILE NAV
+    ========================= */
+    .main-nav {
+        display: none;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--color-bg);
+        padding: var(--spacing-xl) 1.5rem;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .main-nav.is-active {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        animation: navFadeIn 0.4s ease-out;
+    }
+
+    .main-nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: flex-start;
+        width: 100%;
+        margin-top: var(--spacing-lg);
+    }
+
+    .main-nav ul li {
+        width: 100%;
+        opacity: 0;
+        animation: navFadeIn 0.5s ease forwards;
+    }
+
+    .main-nav ul li a {
+        display: block;
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+    }
+
+
+    /* =========================
+       MENU BUTTONS
+    ========================= */
+    .mobile-only {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        left: 1.5rem;
+        z-index: 1003;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 1.5rem;
+        padding: 8px;
+        line-height: 0;
+        z-index: 1001;
+    }
+
+    .menu-toggle .material-symbols-outlined {
+        font-size: 35px;
+        display: block;
+    }
+
+    .menu-close {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        color: var(--color-text);
+    }
+
+    .menu-close .material-symbols-outlined {
+        font-size: 2.5rem;
+    }
+
+    body.menu-open-fixed {
+        overflow: hidden;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+    .footer-col,
     .footer-col.identity {
-        align-items: flex-start; /* Asegura que el logo y descripción no se centren en móvil */
+        align-items: flex-start;
+        text-align: left;
     }
 
     .social-links {
         justify-content: flex-start;
     }
+    main div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
 }
 
-.gallery-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.2); /* Fondo sutil para mejorar legibilidad */
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    padding: 0; /* Limpiamos el padding antiguo */
-}
-
-.gallery-nav .material-symbols-outlined {
-    font-size: 20px; /* Tamaño del icono */
-    color: #fff;
-}
-
-/* Ajuste específico para centrar visualmente el icono de 'back' */
-.gallery-nav.prev .material-symbols-outlined {
-    margin-right: 2px; 
-}
-
-.gallery-nav:hover {
-    background: rgba(0, 0, 0, 0.5);
-    transform: translateY(-50%) scale(1.1);
-}
-
-body.no-scroll {
-    overflow: hidden;
+@keyframes navFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
