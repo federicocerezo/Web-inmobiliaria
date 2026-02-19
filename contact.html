@@ -56,21 +56,19 @@
                 </div>
 
                 <div style="background: var(--color-bg-secondary); padding: 2rem;">
-                    <form action="#" style="display: grid; gap: 1rem;">
+                    <form action="https://formspree.io/f/mnjbzeqq" method="POST" style="display: grid; gap: 1rem;">
                         <div style="display: grid; gap: 0.5rem;">
                             <label for="name">Nombre</label>
-                            <input type="text" id="name"
-                                style="padding: 0.75rem; border: 1px solid var(--color-border); background: #fff;">
+                            <input type="text" id="name" required ="padding: 0.75rem; border: 1px solid var(--color-border); background: #fff;">
                         </div>
                         <div style="display: grid; gap: 0.5rem;">
                             <label for="email">Email</label>
-                            <input type="email" id="email"
-                                style="padding: 0.75rem; border: 1px solid var(--color-border); background: #fff;">
+                            <input type="email" id="email" required style="padding: 0.75rem; border: 1px solid var(--color-border); background: #fff;">
                         </div>
                         <div style="display: grid; gap: 0.5rem;">
                             <label for="message">Mensaje</label>
                             <textarea id="message" rows="5"
-                                style="padding: 0.75rem; border: 1px solid var(--color-border); background: #fff;"></textarea>
+                                required style="padding: 0.75rem; border: 1px solid var(--color-border); background: #fff;"></textarea>
                         </div>
                         <div style="display: flex; gap: 0.5rem; align-items: center;">
                             <input type="checkbox" id="privacy" required>
@@ -79,6 +77,9 @@
                         <button type="submit" class="btn btn-primary" style="justify-self: start;">Enviar
                             Mensaje
                         </button>
+                        <p id="form-success" style="display: none; margin-top: 1rem; font-weight: 500;">
+                            Mensaje enviado con éxito. Nos pondremos en contacto pronto.
+                        </p>
                     </form>
                 </div>
             </div>
