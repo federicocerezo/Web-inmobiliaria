@@ -4,8 +4,8 @@
   "description": "Inversión residencial premium en Madrid. Invertimos, reformamos y vendemos viviendas singulares.",
   "start_url": "/",
   "display": "browser",
-  "background_color": "#FDFDFB",
-  "theme_color": "#1C1C1C",
+  "background_color": "#F4F2E8",
+  "theme_color": "#021B33",
   "lang": "es",
   "icons": [
     {

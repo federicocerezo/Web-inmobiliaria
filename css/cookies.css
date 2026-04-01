@@ -8,11 +8,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #1a1a1a;
-    color: #fff;
+    background-color: #021B33;
+    color: #F4F2E8;
     z-index: 9999;
     padding: 1.25rem 2rem;
-    border-top: 1px solid #2e2e2e;
+    border-top: 1px solid #0a2e4a;
     animation: cookieSlideUp 0.4s ease;
 }
 
@@ -94,7 +94,7 @@
 /* Aceptar — equivalente a .btn-primary */
 .cookie-btn--accept {
     background: #fff;
-    color: #1a1a1a;
+    color: #021B33;
     border-color: #fff;
 }
 

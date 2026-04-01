@@ -2,15 +2,15 @@
 
 :root {
     /* Colors */
-    --color-bg: #FDFDFB;
-    /* Warm white/cream */
-    --color-bg-secondary: #F5F5F2;
-    --color-text: #1C1C1C;
-    /* Soft charcoal */
-    --color-text-secondary: #666666;
+    --color-bg: #F4F2E8;
+    /* Warm cream */
+    --color-bg-secondary: #EAE8DE;
+    --color-text: #021B33;
+    /* Deep navy */
+    --color-text-secondary: #3D6080;
     --color-accent: #A69E90;
     /* Muted gold/beige */
-    --color-border: #E5E5E5;
+    --color-border: #D5D3C9;
 
     /* Typography */
     --font-heading: 'Playfair Display', serif;
@@ -131,60 +131,21 @@ a:hover {
 }
 
 .logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: inherit;
-    text-transform: uppercase;
     text-decoration: none;
-    display: inline-flex;
-    flex-direction: column; 
-    align-items: center;
-    gap: 2px;
-    transition: transform 0.4s ease-in-out; 
-    z-index: 102; 
+    display: inline-block;
+    transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+    z-index: 102;
 }
 
-.logo-text {
-    display: flex;
-    letter-spacing: 0.2em;
-}
-
-.logo span {
-    font-weight: 300;
-    opacity: 0.7;
-    transition: all 0.4s ease;
-}
-
-.logo b {
-    font-weight: 600;
-    margin-left: 0.4em;
-    letter-spacing: 0.3em;
-    transition: all 0.4s ease;
-}
-
-.logo::after {
-    content: '';
-    width: 0px; 
-    height: 1px;
-    background-color: var(--color-accent);
-    transition: width 0.5s ease;
+.logo-img {
+    height: 90px;
+    width: auto;
+    display: block;
 }
 
 .logo:hover {
-    transform: translateY(-2px); 
-}
-
-.logo:hover::after {
-    width: 100%;
-}
-
-.logo:hover span {
-    opacity: 1;
-    letter-spacing: 0.25em; 
-}
-
-.logo:hover b {
-    color: var(--color-accent); 
+    transform: translateY(-2px);
+    opacity: 0.8;
 }
 
 .main-nav ul {
@@ -317,7 +278,7 @@ a:hover {
 
 .kpi-strip {
     padding: var(--spacing-lg) 0;
-    background-color: var(--color-bg-secondary);
+    background-color: #021B33;
     margin-bottom: var(--spacing-lg);
 }
 
@@ -332,7 +293,7 @@ a:hover {
     display: block;
     font-family: var(--font-heading);
     font-size: 2.5rem;
-    color: var(--color-text);
+    color: #F4F2E8;
     margin-bottom: var(--spacing-xs);
 }
 
@@ -340,7 +301,7 @@ a:hover {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--color-text-secondary);
+    color: rgba(244, 242, 232, 0.65);
 }
 
 .value-prop {
@@ -427,7 +388,7 @@ a:hover {
 
 .manifesto {
     padding: var(--spacing-xl) 0;
-    background-color: var(--color-bg-secondary);
+    background-color: #021B33;
     margin: var(--spacing-lg) 0;
 }
 
@@ -438,6 +399,7 @@ a:hover {
     max-width: 800px;
     margin: 0 auto var(--spacing-md) auto;
     font-style: italic;
+    color: #F4F2E8;
 }
 
 .contact-info a {
@@ -553,9 +515,10 @@ a:hover {
 }
 
 .site-footer {
-    background-color: #2a2724;
-    color: #F0EDE8;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
     padding: var(--spacing-lg) 0 var(--spacing-md);
+    border-top: 1px solid var(--color-border);
 }
 
 .footer-container {
@@ -570,7 +533,7 @@ a:hover {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: var(--spacing-sm);
-    color: #F0EDE8;
+    color: var(--color-text);
 }
 
 .footer-description {
@@ -582,7 +545,7 @@ a:hover {
 .footer-bottom {
     margin-top: var(--spacing-lg);
     padding-top: var(--spacing-sm);
-    border-top: 1px solid rgba(240,237,232,0.15);
+    border-top: 1px solid var(--color-border);
     text-align: center;
     font-size: 0.8rem;
     opacity: 0.6;
@@ -608,7 +571,7 @@ a:hover {
 }
 
 .footer-col a:hover {
-    color: #D4C9BC;
+    color: var(--color-accent);
     opacity: 1;
 }
 
@@ -661,13 +624,11 @@ body.no-scroll {
     }
 
     .logo {
-        font-size: 1.2rem;
-        transform: none;
         z-index: 1002;
     }
 
-    .logo::after {
-        width: 0;
+    .logo-img {
+        height: 65px;
     }
 
 
