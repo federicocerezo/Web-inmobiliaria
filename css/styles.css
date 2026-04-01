@@ -81,6 +81,12 @@ a:hover {
     letter-spacing: 0.1em;
 }
 
+/* Focus states — accesibilidad */
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
 /* Buttons */
 
 .btn {
@@ -547,8 +553,8 @@ a:hover {
 }
 
 .site-footer {
-    background-color: #1a1a1a;
-    color: #fff;
+    background-color: #2a2724;
+    color: #F0EDE8;
     padding: var(--spacing-lg) 0 var(--spacing-md);
 }
 
@@ -564,7 +570,7 @@ a:hover {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: var(--spacing-sm);
-    color: #ffffff;
+    color: #F0EDE8;
 }
 
 .footer-description {
@@ -576,7 +582,7 @@ a:hover {
 .footer-bottom {
     margin-top: var(--spacing-lg);
     padding-top: var(--spacing-sm);
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(240,237,232,0.15);
     text-align: center;
     font-size: 0.8rem;
     opacity: 0.6;
@@ -602,7 +608,8 @@ a:hover {
 }
 
 .footer-col a:hover {
-    color: var(--color-accent);
+    color: #D4C9BC;
+    opacity: 1;
 }
 
 .social-links {
@@ -629,7 +636,7 @@ body.no-scroll {
     }
 
     .kpi-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .value-grid,
@@ -644,11 +651,13 @@ body.no-scroll {
     }
 
     .gallery-container {
-        aspect-ratio: 4/3;
+        aspect-ratio: 16/9;
     }
 
     .gallery-nav {
-        padding: 1rem;
+        padding: 0.5rem;
+        width: 36px;
+        height: 36px;
     }
 
     .logo {
