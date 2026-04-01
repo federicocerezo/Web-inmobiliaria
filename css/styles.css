@@ -471,10 +471,14 @@ a:hover {
     color: #fff;
     font-size: 2rem;
     cursor: pointer;
-    opacity: 0.7;
-    
+    opacity: 0;
+
     /* Animación */
     transition: all 0.3s ease;
+}
+
+.gallery-container:hover .gallery-nav {
+    opacity: 0.7;
 }
 
 .gallery-nav:hover {
@@ -505,6 +509,22 @@ a:hover {
     letter-spacing: 0.2em;
     z-index: 10;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-container:hover .gallery-counter {
+    opacity: 1;
+}
+
+/* En móvil siempre visibles */
+@media (max-width: 768px) {
+    .gallery-nav {
+        opacity: 0.7 !important;
+    }
+    .gallery-counter {
+        opacity: 1 !important;
+    }
 }
 
 .menu-toggle {
