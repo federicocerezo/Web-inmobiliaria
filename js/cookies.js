@@ -26,21 +26,16 @@
     /* ── Muestra / oculta el banner ── */
     function showBanner() {
         var banner = document.getElementById('cookie-banner');
-        var widget = document.getElementById('cookie-widget');
         if (banner) banner.classList.remove('cookie-banner--hidden');
-        if (widget) widget.style.display = 'none';
     }
 
     function hideBanner() {
         var banner = document.getElementById('cookie-banner');
-        var widget = document.getElementById('cookie-widget');
         if (banner) banner.classList.add('cookie-banner--hidden');
-        if (widget) widget.style.display = 'flex';
     }
 
     /* ── Construye el banner en el DOM ── */
     function buildBanner() {
-        /* Banner principal */
         var banner = document.createElement('div');
         banner.id = 'cookie-banner';
         banner.className = 'cookie-banner';
@@ -59,18 +54,8 @@
                 '</div>' +
             '</div>';
 
-        /* Widget flotante para reabrir preferencias */
-        var widget = document.createElement('button');
-        widget.id = 'cookie-widget';
-        widget.className = 'cookie-widget';
-        widget.setAttribute('aria-label', 'Gestionar preferencias de cookies');
-        widget.setAttribute('title', 'Preferencias de cookies');
-        widget.innerHTML = '<span class="cookie-widget__label">C</span>';
-
         document.body.appendChild(banner);
-        document.body.appendChild(widget);
 
-        /* Eventos de los botones */
         document.getElementById('cookie-accept').addEventListener('click', function () {
             setConsent('accepted');
             loadFonts();
@@ -82,8 +67,12 @@
             hideBanner();
         });
 
-        widget.addEventListener('click', function () {
-            showBanner();
+        /* Link "Gestionar cookies" del footer */
+        document.querySelectorAll('.cookie-reopen').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                showBanner();
+            });
         });
     }
 
@@ -98,7 +87,6 @@
         } else if (consent === 'rejected') {
             hideBanner();
         }
-        /* Si consent === null: banner visible por defecto */
     }
 
     if (document.readyState === 'loading') {

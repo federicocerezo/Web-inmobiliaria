@@ -10,6 +10,7 @@
     <meta name="theme-color" content="#FDFDFB">
     <link rel="icon" href="/assets/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="/assets/favicon.png">
+    <link rel="manifest" href="/manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -24,6 +25,40 @@
     <meta property="og:image" content="https://dilusliving.com/assets/project-images/Cadarso/calle-cadarso1.jpg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dilusliving.com/">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://dilusliving.com/#organization",
+                "name": "DILUS Living",
+                "legalName": "Dilus MNS S.L",
+                "url": "https://dilusliving.com",
+                "logo": "https://dilusliving.com/assets/favicon.png",
+                "email": "info@dilus.net",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Paseo de la Castellana 176, 1º",
+                    "addressLocality": "Madrid",
+                    "postalCode": "28046",
+                    "addressCountry": "ES"
+                },
+                "description": "Dilus Living invierte, reforma y vende viviendas singulares en ubicaciones consolidadas de Madrid bajo estándares premium."
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://dilusliving.com/#website",
+                "url": "https://dilusliving.com",
+                "name": "Dilus Living",
+                "publisher": { "@id": "https://dilusliving.com/#organization" },
+                "inLanguage": "es"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -134,13 +169,13 @@
             <div class="project-card">
                 <div class="gallery-container">
                      <div class="gallery-slide active">
-                        <img src="assets/project-images/Conde/salon-conde1.jpg" alt="Salón principal - Proyecto Conde">
+                        <img src="assets/project-images/Conde/salon-conde1.jpg" alt="Salón principal - Proyecto Conde" loading="lazy">
                     </div>
                     <div class="gallery-slide">
-                        <img src="assets/project-images/Conde/dorm-conde1.jpg" alt="Dormitorio principal - Proyecto Conde">
+                        <img src="assets/project-images/Conde/dorm-conde1.jpg" alt="Dormitorio principal - Proyecto Conde" loading="lazy">
                     </div>
                     <div class="gallery-slide">
-                        <img src="assets/project-images/Conde/bano-conde1.jpg" alt="Baño suite - Proyecto Conde">
+                        <img src="assets/project-images/Conde/bano-conde1.jpg" alt="Baño suite - Proyecto Conde" loading="lazy">
                     </div>
                     <button class="gallery-nav prev" aria-label="Anterior">
                         <span class="material-symbols-outlined">arrow_back_ios_new</span>
@@ -158,10 +193,10 @@
             <div class="project-card">
                 <div class="gallery-container">
                     <div class="gallery-slide active">
-                        <img src="assets/project-images/Cuevas/salon-cuevas2.jpg" alt="Salón principal 2 - Proyecto Cuevas">
+                        <img src="assets/project-images/Cuevas/salon-cuevas2.jpg" alt="Salón principal 2 - Proyecto Cuevas" loading="lazy">
                     </div>
                     <div class="gallery-slide">
-                        <img src="assets/project-images/Cuevas/bano-cuevas1.jpg" alt="Baño suite - Proyecto Cuevas">
+                        <img src="assets/project-images/Cuevas/bano-cuevas1.jpg" alt="Baño suite - Proyecto Cuevas" loading="lazy">
                     </div>
                     <button class="gallery-nav prev" aria-label="Anterior">
                         <span class="material-symbols-outlined">arrow_back_ios_new</span>
@@ -179,13 +214,13 @@
             <div class="project-card">
                 <div class="gallery-container">
                     <div class="gallery-slide active">
-                        <img src="assets/project-images/Lope/salon1-lope.jpg" alt="Salón principal - Proyecto Lope">
+                        <img src="assets/project-images/Lope/salon1-lope.jpg" alt="Salón principal - Proyecto Lope" loading="lazy">
                     </div>
                     <div class="gallery-slide">
-                        <img src="assets/project-images/Lope/cocina1-lope.jpg" alt="Cocina de diseño - Proyecto Lope">
+                        <img src="assets/project-images/Lope/cocina1-lope.jpg" alt="Cocina de diseño - Proyecto Lope" loading="lazy">
                     </div>
                     <div class="gallery-slide">
-                        <img src="assets/project-images/Lope/bano1-lope.jpg" alt="Baño suite - Proyecto Lope">
+                        <img src="assets/project-images/Lope/bano1-lope.jpg" alt="Baño suite - Proyecto Lope" loading="lazy">
                     </div>
                     <button class="gallery-nav prev" aria-label="Anterior">
                         <span class="material-symbols-outlined">arrow_back_ios_new</span>
@@ -239,6 +274,7 @@
                     <li><a href="aviso-legal.html">Aviso Legal</a></li>
                     <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
                     <li><a href="politica-cookies.html">Política de Cookies</a></li>
+                    <li><a href="#" class="cookie-reopen">Gestionar cookies</a></li>
                 </ul>
             </div>
 
