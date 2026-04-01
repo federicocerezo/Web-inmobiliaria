@@ -2,5 +2,19 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/favicon.ico", "destination": "/assets/favicon.png" }
+  ],
+  "headers": [
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=UTF-8" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=UTF-8" }
+      ]
+    }
   ]
 }
