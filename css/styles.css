@@ -765,6 +765,7 @@ body.no-scroll {
 
     body.menu-open-fixed {
         overflow: hidden;
+        touch-action: none;
     }
 
 

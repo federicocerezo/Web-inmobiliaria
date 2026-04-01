@@ -5,26 +5,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainNav = document.querySelector('.main-nav');
     const header = document.querySelector('.site-header');
 
+    function preventTouchMove(e) { e.preventDefault(); }
+
+    function openMenu() {
+        mainNav.classList.add('is-active');
+        header.classList.add('menu-open');
+        menuToggle.classList.add('hidden-icon');
+        document.body.classList.add('menu-open-fixed');
+        document.addEventListener('touchmove', preventTouchMove, { passive: false });
+    }
+
+    function closeMenu() {
+        mainNav.classList.remove('is-active');
+        header.classList.remove('menu-open');
+        menuToggle.classList.remove('hidden-icon');
+        document.body.classList.remove('menu-open-fixed');
+        document.removeEventListener('touchmove', preventTouchMove);
+    }
+
     if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('is-active');
-            menuToggle.classList.add('hidden-icon');
-            header.classList.add('menu-open');
-        });
-
-        menuClose?.addEventListener('click', () => {
-            mainNav.classList.remove('is-active');
-            menuToggle.classList.remove('hidden-icon');
-            header.classList.remove('menu-open');
-        });
-
-        const navLinks = mainNav.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('is-active');
-                menuToggle.classList.remove('hidden-icon');
-                header.classList.remove('menu-open');
-            });
+        menuToggle.addEventListener('click', openMenu);
+        menuClose?.addEventListener('click', closeMenu);
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
     }
     
@@ -115,30 +118,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    // Actualiza esta sección en tu js/main.js
-    if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.add('is-active');
-            header.classList.add('menu-open');
-            document.body.classList.add('menu-open-fixed'); // Bloquea scroll
-            menuToggle.classList.add('hidden-icon');
-        });
-
-        menuClose?.addEventListener('click', () => {
-            mainNav.classList.remove('is-active');
-            header.classList.remove('menu-open');
-            document.body.classList.remove('menu-open-fixed'); // Libera scroll
-            menuToggle.classList.remove('hidden-icon');
-        });
-
-        const navLinks = mainNav.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('is-active');
-                header.classList.remove('menu-open');
-                document.body.classList.remove('menu-open-fixed');
-                menuToggle.classList.remove('hidden-icon');
-            });
-        });
-    }
 });
