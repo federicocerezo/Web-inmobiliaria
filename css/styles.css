@@ -113,6 +113,20 @@ a:hover {
     color: var(--color-bg);
 }
 
+/* Botón Hablemos — navy por defecto, crema en hover */
+.manifesto .btn-primary {
+    background-color: #021B33;
+    color: #F4F2E8;
+    border: 2px solid rgba(244, 242, 232, 0.4);
+}
+
+.manifesto .btn-primary:hover {
+    background-color: #F4F2E8;
+    color: #021B33;
+    border-color: #F4F2E8;
+    opacity: 1;
+}
+
 /* Main Layout Styles */
 
 .site-header {
@@ -536,10 +550,15 @@ a:hover {
     color: var(--color-text);
 }
 
+.footer-col.identity {
+    align-items: center;
+}
+
 .footer-description {
     margin-top: var(--spacing-sm);
     font-size: 0.9rem;
     opacity: 0.8;
+    text-align: center;
 }
 
 .footer-bottom {
@@ -623,8 +642,12 @@ body.no-scroll {
         height: 36px;
     }
 
-    .logo {
+    .site-header .logo {
         z-index: 1002;
+    }
+
+    .site-footer .logo {
+        z-index: auto;
     }
 
     .logo-img {
