@@ -1,0 +1,50 @@
+/* ============================================
+   Animations — Dilus Living
+   ============================================ */
+
+/* ── 1. Fade-in scroll ── */
+.fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delays escalonados para grupos */
+.fade-up:nth-child(2) { transition-delay: 0.1s; }
+.fade-up:nth-child(3) { transition-delay: 0.2s; }
+.fade-up:nth-child(4) { transition-delay: 0.3s; }
+.fade-up:nth-child(5) { transition-delay: 0.4s; }
+
+
+/* ── 2. Ken Burns en hero ── */
+@keyframes kenBurns {
+    from { transform: scale(1);    }
+    to   { transform: scale(1.06); }
+}
+
+.hero-image {
+    animation: kenBurns 10s ease-in-out infinite alternate;
+    transform-origin: center center;
+}
+
+
+/* ── 3. Transición entre páginas ── */
+.page-transition {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-bg);
+    z-index: 9000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.page-transition.is-entering {
+    opacity: 1;
+    pointer-events: all;
+}

@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/cookies.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="canonical" href="https://dilusliving.com/investment">
@@ -72,23 +73,23 @@
        <section class="kpi-strip">
         <div class="container kpi-grid">
             <div class="kpi-item">
-                <span class="kpi-number">+28</span>
+                <span class="kpi-number" data-target="28" data-prefix="+" data-suffix="">+28</span>
                 <span class="kpi-label">Proyectos Completados</span>
             </div>
             <div class="kpi-item">
-                <span class="kpi-number">+20%</span>
+                <span class="kpi-number" data-target="20" data-prefix="+" data-suffix="%">+20%</span>
                 <span class="kpi-label">Rentabilidad Neta por proyecto</span>
             </div>
             <div class="kpi-item">
-                <span class="kpi-number">x2</span>
+                <span class="kpi-number" data-target="2" data-prefix="x" data-suffix="">x2</span>
                 <span class="kpi-label">Rotación anual sobre el invertido</span>
             </div>
             <div class="kpi-item">
-                <span class="kpi-number">x1.27</span>
+                <span class="kpi-number" data-target="1.27" data-prefix="x" data-suffix="" data-decimals="2">x1.27</span>
                 <span class="kpi-label">Múltiplo sobre capital</span>
             </div>
             <div class="kpi-item">
-                <span class="kpi-number">16M€</span>
+                <span class="kpi-number" data-target="16" data-prefix="" data-suffix="M€">16M€</span>
                 <span class="kpi-label">Invertidos</span>
             </div>
         </div>
@@ -205,6 +206,8 @@
         </div>
     </footer>
     <script src="js/cookies.js"></script>
+    <script src="js/kpi-counter.js"></script>
+    <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
 </body>
 
