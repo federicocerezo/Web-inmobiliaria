@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     forms.forEach(form => {
         const checkbox = form.querySelector('input[type="checkbox"]');
         const submitBtn = form.querySelector('button[type="submit"]');
-        const successMessage = form.querySelector('#form-success');
+        const successMessage = form.parentElement.querySelector('#form-success');
 
         if (checkbox && submitBtn) {
             submitBtn.disabled = !checkbox.checked;
@@ -98,14 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (response.status === 200) {
                         form.reset();
-                        if (successMessage) successMessage.style.display = 'block';
-                        submitBtn.innerText = originalText;
-
-                        setTimeout(() => {
-                            if (successMessage) successMessage.style.display = 'none';
-                            submitBtn.disabled = !checkbox.checked;
-                            submitBtn.style.opacity = checkbox.checked ? "1" : "0.5";
-                        }, 5000);
+                        form.style.display = 'none';
+                        if (successMessage) successMessage.classList.add('is-visible');
                     } else {
                         throw new Error("Error en el envío");
                     }

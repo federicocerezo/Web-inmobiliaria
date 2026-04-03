@@ -93,16 +93,19 @@
                                 required style="padding: 0.75rem; border: 1px solid var(--color-border); background: var(--color-bg);"></textarea>
                         </div>
                         <div style="display: flex; gap: 0.5rem; align-items: center;">
-                            <input type="checkbox" id="privacy" required>  
+                            <input type="checkbox" id="privacy" required>
                             <label for="privacy" style="font-size: 0.8rem;">He leído y acepto la <a href="politica-privacidad.html" style="text-decoration: underline;">Política de Privacidad</a></label>
                         </div>
                         <button type="submit" class="btn btn-primary" style="justify-self: start;">Enviar
                             Mensaje
                         </button>
-                        <p id="form-success" style="display: none; margin-top: 1rem; font-weight: 500;">
-                            Mensaje enviado con éxito. Nos pondremos en contacto pronto.
-                        </p>
                     </form>
+                    <div id="form-success" class="form-success-panel">
+                        <div class="form-success-check">✓</div>
+                        <div class="form-success-divider"></div>
+                        <h3>Mensaje recibido.</h3>
+                        <p>Nos pondremos en contacto con usted a la brevedad posible.</p>
+                    </div>
                 </div>
             </div>
         </div>
