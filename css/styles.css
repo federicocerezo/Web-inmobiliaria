@@ -135,8 +135,8 @@ a:hover {
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid var(--color-border);
 }
+
 
 .header-container {
     display: flex;
@@ -148,7 +148,14 @@ a:hover {
     text-decoration: none;
     display: inline-block;
     transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+}
+
+.site-header .logo {
     z-index: 102;
+}
+
+.site-footer .logo {
+    z-index: auto;
 }
 
 .logo-img {
@@ -552,12 +559,11 @@ a:hover {
     background-color: var(--color-bg-secondary);
     color: var(--color-text);
     padding: var(--spacing-lg) 0 var(--spacing-md);
-    border-top: 1px solid var(--color-border);
 }
 
 .footer-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Logo | Navegación | Legal | Redes */
+    grid-template-columns: repeat(5, 1fr); /* Logo | Navegación | Legal | Oficinas | Redes */
     gap: var(--spacing-lg);
     align-items: start;
 }
@@ -576,15 +582,31 @@ a:hover {
 
 .footer-description {
     margin-top: var(--spacing-sm);
-    font-size: 0.9rem;
-    opacity: 0.8;
+    font-size: 1rem;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 400;
+    color: #021B33;
+    opacity: 1;
     text-align: center;
+}
+
+.footer-col.offices address {
+    font-style: normal;
+    font-size: inherit;
+    line-height: 1.7;
+    color: inherit;
+}
+
+.footer-col.offices address p {
+    color: inherit;
+    font-size: inherit;
+    margin-bottom: 0.25rem;
 }
 
 .footer-bottom {
     margin-top: var(--spacing-lg);
     padding-top: var(--spacing-sm);
-    border-top: 1px solid var(--color-border);
     text-align: center;
     font-size: 0.8rem;
     opacity: 0.6;
@@ -617,7 +639,25 @@ a:hover {
 .social-links {
     display: flex;
     gap: var(--spacing-sm);
-    justify-content: flex-start; 
+    justify-content: flex-start;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--color-accent);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.social-links svg {
+    display: block;
 }
 
 body.no-scroll {
@@ -785,8 +825,27 @@ body.no-scroll {
     /* =========================
        FOOTER
     ========================= */
-    .footer-col,
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-md);
+    }
+
+    /* Logo + slogan: fila completa centrada */
     .footer-col.identity {
+        grid-column: 1 / -1;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Fila 1: Navegación izq, Legal der */
+    .footer-col.nav-main  { grid-column: 1; }
+    .footer-col.nav-legal { grid-column: 2; }
+
+    /* Fila 2: Oficinas izq, Síguenos der */
+    .footer-col.offices { grid-column: 1; }
+    .footer-col.social  { grid-column: 2; }
+
+    .footer-col {
         align-items: flex-start;
         text-align: left;
     }
